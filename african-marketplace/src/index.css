@@ -49,6 +49,7 @@ table {
 
 html {
   font-size: 62.5%;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 body {
@@ -64,3 +65,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
