@@ -18,6 +18,13 @@ const HeaderDiv = styled.div`
   }
 `;
 
+const AppWrapper = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: rgb(243, 243, 243);
+`;
+
 function NavBar() {
   return (
     <HeaderDiv>
@@ -34,6 +41,9 @@ function App() {
   return (
     <div>
       <NavBar />
+      <AppWrapper>
+        Hello!
+      </AppWrapper>
     </div>
   );
 }
