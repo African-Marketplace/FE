@@ -8,7 +8,7 @@ function CategoryPage(props) {
     const category = props.category.find(item => item.name === params.catName)
     return (
         <>
-          <p>{category.name}</p>  
+          <p style={{color: 'white', fontSize: '2rem'}}>{category.name}</p>  
         </>
     )
 }
