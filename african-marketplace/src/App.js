@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
+import AnnieSpratt from './assets/annie-spratt.jpg'
 import styled from 'styled-components';
 import axios from 'axios';
 import Categories from './Categories'
+import CategoryPage from './CategoryPage'
 import './App.css';
 
 const HeaderDiv = styled.div`
@@ -20,6 +22,19 @@ const HeaderDiv = styled.div`
   }
   button {
     margin-right: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.6rem;
+    padding: 5px 10px;
+    background-color: #F3F3F3;
+    outline: none;    
+    cursor: pointer;
+    border-radius: 5px;
+    &:hover {
+      box-shadow: 5px -5px 15px rgba(26, 30, 35, .4);
+    }
+  }
+  div {
+    align-self: center;
   }
 `;
 
@@ -28,7 +43,18 @@ const AppWrapper = styled.div`
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
+  text-align: center;
   background-color: rgb(243, 243, 243);
+  .headerText {
+    padding: 45px 0;
+    font-family: 'Ubuntu', sans-serif;
+    font-style: italic;
+    letter-spacing: 1.2px;
+    color: rgb(243, 243, 243);
+    font-size: 4rem;
+    width: 100%;
+    background: rgba(26, 30, 35, .4);
+  }
   div {
     display: flex;
     flex-flow: row-wrap;
@@ -84,11 +110,17 @@ function App() {
   return (
     <div>
       <NavBar />
-      <AppWrapper>
+      <AppWrapper className='appWrapper'>
+        <h1 className='headerText'>Welcome! Please Choose Your Category</h1>
+
         <Switch>
-          <Route path='/' render={() => {
-            return <Categories cards={categories} />
+          <Route path='/product/:catName' render={(props) => {
+            return <CategoryPage category={categories} />
           }} />
+          <Route path='/' render={() => {
+            return (
+              <Categories cards={categories} />
+            )}} />
         </Switch>
       </AppWrapper>
     </div>

@@ -66,3 +66,9 @@ code {
     monospace;
 }
 
+.appWrapper {
+	background-image: url('./assets/annie-spratt.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
