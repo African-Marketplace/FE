@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -50,7 +50,7 @@ const AppWrapper = styled.div`
     font-style: italic;
     letter-spacing: 1.2px;
     color: rgb(243, 243, 243);
-    font-size: 4rem;
+    font-size: 2rem;
     width: 100%;
     background: rgba(26, 30, 35, .4);
   }
@@ -94,6 +94,10 @@ function NavBar() {
   //   })
   // }, [])
 
+  useEffect(() => {
+    const appSelector = document.querySelector
+  }, [])
+    
   return (
     <HeaderDiv>
       <h1>African Marketplace</h1>
@@ -111,16 +115,8 @@ function CatRender() {
       <NavBar />
       <AppWrapper className='appWrapper'>
         <h1 className='headerText headerToggle'>Welcome! Please Choose Your Category</h1>
+        <Categories cards={categories} />
 
-        <Switch>
-          <Route path='/product/:catName' render={(props) => {
-            return <CategoryPage category={categories} />
-          }} />
-          <Route path='/' render={() => {
-            return (
-              <Categories cards={categories} />
-            )}} />
-        </Switch>
       </AppWrapper>
     </div>
   );

@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import data from './data'
 
 import Login from "./components/login";
 import SignUp from "./components/signup";
 import PrivateRoute from "./components/PrivateRoute";
-import ItemList from "./components/ItemList";
+import CatRender from "./CatRender";
+import CategoryPage from './CategoryPage'
 
 function App() {
   return (
@@ -26,16 +28,23 @@ function App() {
         </div>
       </nav>
 
+      
       <div className="auth-wrapper">
         <div className="auth-inner">
           <Switch>
-            <Route exact path='/' component={Login} />
-            <Route path="/sign-in" component={Login} />
             <Route path="/sign-up" component={SignUp} />
-            <PrivateRoute exact path="/itemlist" component={ItemList} />
+            <Route path="/sign-in" component={Login} />
+            <Route exact path='/' component={Login} />
           </Switch>
         </div>
       </div>
+      <Switch>
+        <Route path='/itemlist/:catName' render={() => {
+          return <CategoryPage category={data} />
+        }} />
+        <PrivateRoute exact path="/itemlist" component={CatRender} />
+      </Switch>
+      
     </div>
     </Router>
   );
