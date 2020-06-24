@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -44,7 +44,7 @@ function Categories(props) {
         <div>
             {card.map(item => {
                 return (                    
-                    <Link to={`/product/${item.name}`} style={{cursor: 'auto'}}>
+                    <Link to={`/product/${item.name}`} style={{cursor: 'auto'}} >
                         <Card style={{cursor: 'pointer'}} key={item.name}>
                             <h3>{item.name}</h3>
                             <img src={item.url} alt='marketplace category' />                       

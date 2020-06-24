@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-import AnnieSpratt from './assets/annie-spratt.jpg'
 import styled from 'styled-components';
 import axios from 'axios';
 import Categories from './Categories'
@@ -111,7 +110,7 @@ function App() {
     <div>
       <NavBar />
       <AppWrapper className='appWrapper'>
-        <h1 className='headerText'>Welcome! Please Choose Your Category</h1>
+        <h1 className='headerText headerToggle'>Welcome! Please Choose Your Category</h1>
 
         <Switch>
           <Route path='/product/:catName' render={(props) => {

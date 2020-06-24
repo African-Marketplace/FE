@@ -72,3 +72,7 @@ code {
 	background-repeat: no-repeat;
 	background-size: 100% auto;
 }
+
+.headerToggle {
+	height: 0;
+}
