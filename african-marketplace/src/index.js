@@ -1,27 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-<<<<<<< HEAD
-import { BrowserRouter as Router } from 'react-router-dom';
-=======
 import { BrowserRouter } from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
->>>>>>> dc52061e4031f97d5099d8d5cd321ec63a630bfe
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-<<<<<<< HEAD
-  <Router>
-    <App />
-  </Router>,
-=======
   <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
->>>>>>> dc52061e4031f97d5099d8d5cd321ec63a630bfe
   document.getElementById('root')
 );
 
