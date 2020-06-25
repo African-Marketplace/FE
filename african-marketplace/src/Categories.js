@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const Card = styled.div`
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     width: 200px;
@@ -14,7 +15,7 @@ const Card = styled.div`
     h3 {
         font-weight: 700;
         letter-spacing: 1px;
-        font-size: 2.5rem;
+        font-size: 2rem;
         text-align: center;
         text-decoration: none;
         width: 100%;
@@ -38,8 +39,19 @@ const Card = styled.div`
 `;
 
 function Categories(props) {
-    const card = props.cards;
-    console.log(card)
+    // const [categories, setCategories] = useState([])
+
+    // useEffect(() => {
+    //     axiosWithAuth()
+    //     .get('/products/cat')
+    //     .then(res => {
+    //         console.log(res)
+    //         setCategories(res.data)
+    //     })
+    //     .catch(err => {
+    //         console.log('error', err)
+    //     })
+    // }, [])
 
     useEffect(() => {
         const appStyle = document.querySelector('.auth-wrapper')
@@ -54,17 +66,19 @@ function Categories(props) {
         })
 
     }, [])
+
+    console.log(props.cards)
     
     return (
         <div>
-            {card.map(item => {
+            {props.cards.map(item => {
                 return (                    
-                    <Link to={`/itemlist/${item.name}`} style={{cursor: 'auto'}} >
-                        <Card style={{cursor: 'pointer'}} key={item.name}>
-                            <h3>{item.name}</h3>
-                            <img src={item.url} alt='marketplace category' />                       
+                    <Link to={`/categories/${item.category_name}`} style={{cursor: 'auto'}} >
+                        <Card style={{cursor: 'pointer'}} key={item.id}>
+                            <h3>{item.category_name}</h3>
+                            {/* <img src={item.url} alt='marketplace category' /> */}
                         </Card>
-                    </Link>                                        
+                    </Link>                                    
                 )
             })}
         </div>

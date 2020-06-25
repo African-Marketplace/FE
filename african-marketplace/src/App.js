@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import data from './data'
 
 import Login from "./components/login";
 import SignUp from "./components/signup";
 import PrivateRoute from "./components/PrivateRoute";
 import CatRender from "./CatRender";
-import CategoryPage from './CategoryPage'
 
 function App() {
   return (
@@ -38,12 +36,8 @@ function App() {
           </Switch>
         </div>
       </div>
-      <Switch>
-        <Route path='/itemlist/:catName' render={() => {
-          return <CategoryPage category={data} />
-        }} />
-        <PrivateRoute exact path="/itemlist" component={CatRender} />
-      </Switch>
+
+        <PrivateRoute exact path="/categories" component={CatRender} />
       
     </div>
     </Router>

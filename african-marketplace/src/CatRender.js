@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
+import axiosWithAuth from './utils/axiosWithAuth'
 import Categories from './Categories'
-import CategoryPage from './CategoryPage'
-import data from './data'
-import './App.css';
+import CategoryItem from './CategoryItem'
 
 const HeaderDiv = styled.div`
   display: flex;
@@ -48,6 +46,7 @@ const AppWrapper = styled.div`
   margin: 0 auto;
   text-align: center;
   background-color: rgb(243, 243, 243);
+  padding-bottom: 50px;
   .headerText {
     padding: 45px 0;
     font-family: 'Ubuntu', sans-serif;
@@ -60,49 +59,18 @@ const AppWrapper = styled.div`
   }
   div {
     display: flex;
-    flex-flow: row-wrap;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 `;
 
-const categories = [
-  {
-    name: 'Clothing & Apparel',
-    url: 'https://dupsies.com/Dstore/product_thumb.php?img=images/Blue-Orange-African-Print-Skirt-DP3900.jpg&w=190&h=286'
-  },
-  {
-    name: 'Authentic Artwork',
-    url: 'https://dupsies.com/Dstore/product_thumb.php?img=images/African-Kente-Print-Fan-Dupsies-DPPF304.jpg&w=190&h=240'
-  },
-  {
-    name: 'Accessories',
-    url: 'https://dupsies.com/Dstore/product_thumb.php?img=images/Ivory-African-Beads-necklace-bracelet-dupsies-DPIL502.jpg&w=146&h=290'
-  },
-  {
-    name: 'Food Items',
-    url: 'https://www.demandafrica.com/wp-content/uploads/2018/10/African-food-facts-starfruit.jpg.webp'
-  }
-]
-
 function NavBar() {
-  // const [categories, setCategories] = useState([])
-
-  // useEffect(() => {
-  //   const response = []
-  //   axios.get(`https://afr-marketplace.herokuapp.com/api/products/cat`)
-  //   .then(response => {
-  //     console.log(response)
-  //   })
-  //   .catch(err => {
-  //     console.log('error ', err)
-  //   })
-  // }, [])
     
   return (
     <HeaderDiv>
       <h1>African Marketplace</h1>
       <div>
-        <Link to='/'><button>Home</button></Link>
+        <Link to='/home'><button>Home</button></Link>
         <Link to='/about'><button>About</button></Link>
       </div>
     </HeaderDiv>
@@ -110,6 +78,20 @@ function NavBar() {
 }
 
 function CatRender() {
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    axiosWithAuth()
+    .get('/products/cat')
+    .then(res => {
+        console.log(res)
+        setCategories(res.data)
+    })
+    .catch(err => {
+        console.log('error', err)
+    })
+  }, [])
+
   return (
     <div>
       <NavBar />
@@ -117,11 +99,11 @@ function CatRender() {
         <h1 className='headerText headerToggle'>Welcome! Please Choose Your Category</h1>
 
         <Switch>
-          <Route path='/itemlist/:catName' render={() => {
-            return <CategoryPage category={data} />
-          }} />
-          <Route exact path='/itemlist' render={() => {
-            return <Categories cards={data} />
+          <Route path={`/categories/:catName`}>
+            <CategoryItem />
+          </Route>
+          <Route exact path='/categories' render={() => {
+            return <Categories cards={categories} />
           }} />
         </Switch>
 
