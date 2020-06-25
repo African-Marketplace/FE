@@ -24,7 +24,6 @@ export default class Signup extends Component {
     axiosWithAuth()
       .post("/auth/register", this.state.credentials)
       .then(res => {
-        //localStorage.setItem("token", res.data.payload);
         this.props.history.push("/sign-in");
         console.log(res);
       })
