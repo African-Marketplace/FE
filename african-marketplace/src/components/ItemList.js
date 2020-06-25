@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import ItemAdd from "./ItemAdd";
 import ItemEdit from "./ItemEdit";
+import { ItemContexts } from '../contexts/ItemContexts';
 
 const initialItemToEdit = {
   product_name: "",
@@ -21,7 +22,7 @@ const ItemList = () =>{
       .get("/products/my")
       .then(res => setItemList(res.data))
       .catch(error => console.log(error));
-  }, []);
+  }, [itemList]);
 
   const editItem = item => {
     setEditing(true);
@@ -47,28 +48,25 @@ const ItemList = () =>{
   };
 
   return (
-    <div className="item-list">
+    <div >
       {!adding && !editing && (
-      <ul>
+      <div className="product-list">
       {itemList.map(item => (
-        <li key={itemList.id} onClick={() => editItem(item)}>
-          <span>{item.product}{"  "}</span>
-          <span>{item.description}{"   "}</span>
-          <span>{item.price}{"   "}</span>
-          <span>{item.category}{"   "}</span>
-          <span>{item.location}{"   "}</span>
-          <span>{item.seller}{"   "}</span>
-          <span className="delete" onClick={e => {
-                  e.stopPropagation();
-                  deleteItem(item)
-                }
-              }>
-                x
-          </span>{" "}
-        </li>
+        <div className="product" key={itemList.id}>
+          <h3>{item.product_name}</h3>
+          <p>Description: {item.description}</p>
+          <p>Price: ${item.price}</p>
+          <p>Cateogry: {item.category}</p>
+          <p>Location: {item.location}</p>
+          <div className="button-row">
+            <button onClick={() => editItem(item)}>Edit</button>
+            <button onClick={() => deleteItem(item)}>Delete</button>
+          </div>
+        </div>
       ))}
-    </ul>
+      </div>
      )} 
+     
     {!adding && !editing && (
     <div className="button-row">
         <button onClick={() => addItem()}>add an item</button>
@@ -80,7 +78,10 @@ const ItemList = () =>{
   )}
 
   {editing && (
-    <ItemEdit editItem={itemToEdit} />
+    <ItemContexts.Provider value={ setItemList }>
+      <ItemEdit editItem={itemToEdit} />
+      {/* <ItemEdit /> */}
+    </ItemContexts.Provider>
   )}
   </div>
   );

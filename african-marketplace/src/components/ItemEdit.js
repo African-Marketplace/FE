@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import ItemList from "./ItemList";
+import { ItemContexts } from '../contexts/ItemContexts';
 
 const ItemEdit = ({ editItem }) =>{
   const [editing, setEditing] = useState(true);
@@ -10,7 +11,9 @@ const ItemEdit = ({ editItem }) =>{
     e.preventDefault();
     axiosWithAuth()
     .put(`/products/my/${itemToEdit.id}`, itemToEdit)
-    .then(res => console.log(res.data))
+    .then(res => {
+      console.log(res.data)
+    })
     .catch(error => console.log(error));
     setEditing(false);
   };
@@ -81,11 +84,11 @@ const ItemEdit = ({ editItem }) =>{
         value={itemToEdit.category}
     >
       <option value="">--Please choose a Category--</option>
-      <option value="Animal Products">Animal Products</option>
-      <option value="Beans">Beans</option>
-      <option value="Cereals">Cereals</option>
-      <option value="Fruits">Fruits</option>
-      <option value="Vegetables">Vegetables</option>
+      <option value="Clothing & Apparel">Clothing & Apparel</option>
+      <option value="Authentic Artwork">Authentic Artwork</option>
+      <option value="Accessories">Accessories</option>
+      <option value="Food Items">Food Items</option>
+      <option value="Others">Others</option>
     </select>
     </div>
 

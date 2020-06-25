@@ -92,11 +92,11 @@ const ItemAdd = (props) =>{
         value={categoryID}
     >
       <option value="">--Please choose a Category--</option>
-      <option value="1">Animal Products</option>
-      <option value="2">Beans</option>
-      <option value="3">Cereals</option>
-      <option value="4">Fruits</option>
-      <option value="5">Vegetables</option>
+      <option value="1">Clothing & Apparel</option>
+      <option value="2">Authentic Artwork</option>
+      <option value="3">Accessories</option>
+      <option value="4">Food Items</option>
+      <option value="5">Others</option>
     </select>
     </div>
 

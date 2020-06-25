@@ -23,10 +23,8 @@ export default class Login extends Component {
     axiosWithAuth()
       .post("/auth/login", this.state.credentials)
       .then(res => {
-        console.log("login file, MJ, login :",res.data.token );
         localStorage.setItem("token", res.data.token);
         this.props.history.push("/itemlist");
-        console.log(res);
       })
       .catch(err =>
         console.error("mj: Login.js: login: err.message: ", err.message)
