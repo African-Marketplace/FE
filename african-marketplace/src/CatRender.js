@@ -98,14 +98,14 @@ function CatRender() {
       <AppWrapper className='appWrapper'>
         <h1 className='headerText headerToggle'>Welcome! Please Choose Your Category</h1>
 
-        <Switch>
-          <Route path={`/categories/:catName`}>
-            <CategoryItem />
-          </Route>
-          <Route exact path='/categories' render={() => {
+        
+          {/* <Route path='/categories/:catName' render={() => {
+            return <CategoryItem />
+          }} /> */}
+          {/* <Route path='/categories' render={() => {
             return <Categories cards={categories} />
-          }} />
-        </Switch>
+          }} /> */}
+          <Categories cards={categories} />
 
       </AppWrapper>
     </div>

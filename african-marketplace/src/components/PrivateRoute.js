@@ -11,7 +11,7 @@ const PrivateRoute = ({ component: Component, ...routeProps }) => {
       render={props => {
         // check to see if we think we have a good token
         if (localStorage.getItem("token")) {
-          return <CatRender {...props} />;
+          return <Component {...props} />;
         } else {
           return <Redirect to="/login" />;
         }

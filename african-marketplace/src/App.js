@@ -6,6 +6,7 @@ import Login from "./components/login";
 import SignUp from "./components/signup";
 import PrivateRoute from "./components/PrivateRoute";
 import CatRender from "./CatRender";
+import CategoryItem from './CategoryItem'
 
 function App() {
   return (
@@ -32,12 +33,14 @@ function App() {
           <Switch>
             <Route path="/sign-up" component={SignUp} />
             <Route path="/sign-in" component={Login} />
+            <PrivateRoute path='/categories/:catName' component={CategoryItem} />
+            <PrivateRoute exact path="/categories" component={CatRender} />            
             <Route exact path='/' component={Login} />
           </Switch>
         </div>
       </div>
 
-        <PrivateRoute exact path="/categories" component={CatRender} />
+        
       
     </div>
     </Router>

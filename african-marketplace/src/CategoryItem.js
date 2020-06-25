@@ -6,9 +6,7 @@ function CategoryItem(props){
 
     console.log('here I am')
     return (
-        <div style={{marginTop: '100px', color: 'white'}}>
-            <p>JChan</p>
-        </div>
+        <p style={{color: 'white', fontSize: '2rem', marginTop: '100px'}}>JChan</p>
     )
 }
 

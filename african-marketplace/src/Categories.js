@@ -69,9 +69,11 @@ function Categories(props) {
 
     console.log(props.cards)
     
+    
     return (
         <div>
             {props.cards.map(item => {
+                console.log(`/categories/${item.category_name}`)
                 return (                    
                     <Link to={`/categories/${item.category_name}`} style={{cursor: 'auto'}} >
                         <Card style={{cursor: 'pointer'}} key={item.id}>
