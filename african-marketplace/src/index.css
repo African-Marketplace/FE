@@ -70,7 +70,7 @@ body, html, .App, #root, .auth-wrapper {
 	background-size: 100% auto;
 }
 
-.headerToggle {
+.authToggle {
 	height: 0; 
 }
 

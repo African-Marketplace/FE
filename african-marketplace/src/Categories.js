@@ -40,6 +40,21 @@ const Card = styled.div`
 function Categories(props) {
     const card = props.cards;
     console.log(card)
+
+    useEffect(() => {
+        const appStyle = document.querySelector('.auth-wrapper')
+        const login = document.querySelectorAll('.nav-link')
+        
+        appStyle.classList.add('authToggle')
+        login[0].addEventListener('click', () => {
+            appStyle.classList.remove('authToggle')
+        })
+        login[1].addEventListener('click', () => {
+            appStyle.classList.remove('authToggle')
+        })
+
+    }, [])
+    
     return (
         <div>
             {card.map(item => {

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import Categories from './Categories'
 import CategoryPage from './CategoryPage'
+import data from './data'
 import './App.css';
 
 const HeaderDiv = styled.div`
@@ -11,19 +12,22 @@ const HeaderDiv = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   max-width: 100%;
-  height: 50px;
+  height: 60px;
   padding: 0 25px 5px 25px;
+  margin-top: 45px;
   background: rgb(232, 76, 61);
   h1 {
     font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
     color: rgb(243, 243, 243);
-    font-size: 4rem;
+    font-size: 2.5rem;
   }
   button {
     margin-right: 20px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.6rem;
-    padding: 5px 10px;
+    padding: 0 10px;
     background-color: #F3F3F3;
     outline: none;    
     cursor: pointer;
@@ -93,10 +97,6 @@ function NavBar() {
   //     console.log('error ', err)
   //   })
   // }, [])
-
-  useEffect(() => {
-    const appSelector = document.querySelector
-  }, [])
     
   return (
     <HeaderDiv>
@@ -115,7 +115,15 @@ function CatRender() {
       <NavBar />
       <AppWrapper className='appWrapper'>
         <h1 className='headerText headerToggle'>Welcome! Please Choose Your Category</h1>
-        <Categories cards={categories} />
+
+        <Switch>
+          <Route path='/itemlist/:catName' render={() => {
+            return <CategoryPage category={data} />
+          }} />
+          <Route exact path='/itemlist' render={() => {
+            return <Categories cards={data} />
+          }} />
+        </Switch>
 
       </AppWrapper>
     </div>
