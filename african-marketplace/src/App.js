@@ -33,15 +33,17 @@ function App() {
           <Switch>
             <Route path="/sign-up" component={SignUp} />
             <Route path="/sign-in" component={Login} />
-            <PrivateRoute path='/categories/:catName' component={CategoryItem} />
-            <PrivateRoute exact path="/categories" component={CatRender} />            
+            {/* <PrivateRoute path='/categories/:catName' component={CategoryItem} />
+            <PrivateRoute exact path="/categories" component={CatRender} />             */}
             <Route exact path='/' component={Login} />
           </Switch>
         </div>
       </div>
 
-        
-      
+        <Switch>
+          <PrivateRoute path='/categories/:catID' component={CategoryItem} />
+          <PrivateRoute exact path="/categories" component={CatRender} /> 
+        </Switch> 
     </div>
     </Router>
   );

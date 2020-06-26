@@ -75,7 +75,7 @@ function Categories(props) {
             {props.cards.map(item => {
                 console.log(`/categories/${item.category_name}`)
                 return (                    
-                    <Link to={`/categories/${item.category_name}`} style={{cursor: 'auto'}} >
+                    <Link to={`/categories/${item.id}`} style={{cursor: 'auto'}} >
                         <Card style={{cursor: 'pointer'}} key={item.id}>
                             <h3>{item.category_name}</h3>
                             {/* <img src={item.url} alt='marketplace category' /> */}

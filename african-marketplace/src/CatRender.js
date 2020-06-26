@@ -21,11 +21,12 @@ const HeaderDiv = styled.div`
     color: rgb(243, 243, 243);
     font-size: 2.5rem;
   }
-  button {
+  a button {
     margin-right: 20px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.6rem;
     padding: 0 10px;
+    text-decoration: none;
     background-color: #F3F3F3;
     outline: none;    
     cursor: pointer;
@@ -60,7 +61,7 @@ const AppWrapper = styled.div`
   div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 `;
 
@@ -70,8 +71,8 @@ function NavBar() {
     <HeaderDiv>
       <h1>African Marketplace</h1>
       <div>
-        <Link to='/home'><button>Home</button></Link>
-        <Link to='/about'><button>About</button></Link>
+        <a href='https://5ef4299962a7f75903a741d6--africanmarketbuildweek1.netlify.app/' target='_blank' ><button>Home</button></a>
+        <a href='#'><button>About</button></a>
       </div>
     </HeaderDiv>
   )
