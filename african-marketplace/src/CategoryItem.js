@@ -59,6 +59,7 @@ function CategoryItem(props){
     return (
         <DivStyle className='appWrapper'>
             <button style={{height: '25px', alignSelf: 'center'}} onClick={() => { history.goBack() }}>Go Back</button>
+            <button style={{height: '25px', alignSelf: 'center'}}>Add an Item!</button>
             {category.map(item => {
                 return (<div>
                         <h3>Product Name: {item.product_name}</h3>
