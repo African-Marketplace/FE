@@ -6,7 +6,8 @@ import Login from "./components/login";
 import SignUp from "./components/signup";
 import PrivateRoute from "./components/PrivateRoute";
 import CatRender from "./CatRender";
-import CategoryItem from './CategoryItem'
+import CategoryItem from './CategoryItem';
+import ItemList from './components/ItemList'
 
 function App() {
   return (
@@ -25,6 +26,12 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to={"/itemlist"}>My Items</Link>
               </li>
+              <li>
+                <Link className='nav-link' to={"/categories"}>Categories Page</Link>
+              </li>
+              <li>
+                <a className='nav-link' href={"https://5ef4299962a7f75903a741d6--africanmarketbuildweek1.netlify.app/"}>Home Page</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -36,6 +43,7 @@ function App() {
           <Switch>
             <Route path="/sign-up" component={SignUp} />
             <Route path="/sign-in" component={Login} />
+            <PrivateRoute exact path="/itemlist" component={ItemList} />
             {/* <PrivateRoute path='/categories/:catName' component={CategoryItem} />
             <PrivateRoute exact path="/categories" component={CatRender} />             */}
             <Route exact path='/' component={Login} />

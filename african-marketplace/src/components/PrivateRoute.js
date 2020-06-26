@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import CatRender from '../CatRender'
 
 const PrivateRoute = ({ component: Component, ...routeProps }) => {
   // const { name, age } = { name: "bk", age: 51 };

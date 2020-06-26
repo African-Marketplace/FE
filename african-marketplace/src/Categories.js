@@ -62,9 +62,10 @@ function Categories(props) {
             appStyle.classList.remove('authToggle')
         })
         login[1].addEventListener('click', () => {
+        })
+        login[2].addEventListener('click', () => {
             appStyle.classList.remove('authToggle')
         })
-
     }, [])
 
     console.log(props.cards)

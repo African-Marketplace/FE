@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom'
+import { Link, Route, useParams, useHistory } from 'react-router-dom'
 import axiosWithAuth from './utils/axiosWithAuth'
 import styled from 'styled-components'
+import ItemList from './components/ItemList'
 
 const DivStyle = styled.div`
     width: 100%;
@@ -54,12 +55,32 @@ function CategoryItem(props){
       })
     }, [])
 
+    useEffect(() => {
+        const appStyle = document.querySelector('.auth-wrapper')
+        const button = document.querySelector('.displayAuth')
+        
+        // appStyle.classList.add('authToggle')
+        // login[0].addEventListener('click', () => {
+        //     appStyle.classList.remove('authToggle')
+        // })
+        // login[1].addEventListener('click', () => {
+        // })
+        // login[2].addEventListener('click', () => {
+        //     appStyle.classList.remove('authToggle')
+        // })
+
+        button.addEventListener('click', () => {
+            appStyle.classList.remove('authToggle')
+        })
+
+    }, [])
+
     console.log(category[0])
 
     return (
         <DivStyle className='appWrapper'>
             <button style={{height: '25px', alignSelf: 'center'}} onClick={() => { history.goBack() }}>Go Back</button>
-            <button style={{height: '25px', alignSelf: 'center'}}>Add an Item!</button>
+            <Link to='/itemlist'><button className='displayAuth' style={{height: '25px', alignSelf: 'center'}}>Add an Item!</button></Link>
             {category.map(item => {
                 return (<div>
                         <h3>Product Name: {item.product_name}</h3>
@@ -73,6 +94,9 @@ function CategoryItem(props){
                         <p>Price: {item.price}</p>
                     </div>)
             })}
+            <Route path='./itemlist' render={() => {
+                return <ItemList categoryID={params.catID}/>
+            }} />
         </DivStyle>
     )
 }

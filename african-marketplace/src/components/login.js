@@ -24,12 +24,8 @@ export default class Login extends Component {
       .post("/auth/login", this.state.credentials)
       .then(res => {
         localStorage.setItem("token", res.data.token);
-<<<<<<< HEAD
         this.props.history.push("/categories");
         console.log(res);
-=======
-        this.props.history.push("/itemlist");
->>>>>>> d0a4d5a18f09c41106055b84e7d2fbe8840c0c39
       })
       .catch(err =>
         console.error("mj: Login.js: login: err.message: ", err.message)
